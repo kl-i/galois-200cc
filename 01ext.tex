@@ -1,0 +1,160 @@
+\documentclass[main.tex]{subfiles}
+
+\begin{document}
+\section{Field Extensions and the Essence of Galois Theory}
+
+\begin{dfn} [\link{dfn:field_morphisms}
+  {Field Morphisms, Isomorphisms, Automorphisms}]
+  % Let $K$ be a commutative ring. 
+  % Then $K$ is a \emph{field} when the following are satisfied : 
+  % \begin{enumerate}
+  %   \item (Non-Trivial) $1 \neq 0 \in K$.
+  %   \item (Non-Zero implies Unit) 
+  %   $\forall\, x \in K \setminus \{0\}, \exists\, y \in K, x y = 1$.  
+  % \end{enumerate}
+  % Since non-zero elements of a field are multiplicatively invertible, 
+  % they are called \emph{units}. 
+
+  A \emph{field morphism} $\io : K \to L$ between fields is
+  just a ring morphism, that is, a function satisfying the following : 
+  \begin{enumerate}
+    \item (Additive)
+    $\forall\, x, y \in K, \io(x + y) = \io(x) + \io(y)$. 
+    \item (Multiplicative) 
+    $\forall\, x, y \in K, \io(x y) = \io(x) \io(y)$. 
+    \item (Preserves One) $\io(1) = 1$.  
+  \end{enumerate} 
+  A field morphism that is bijective is called an \emph{isomorphism}. 
+  In particular, 
+  isomorphisms of a field to itself are called \emph{automorphisms}. 
+  We denote the set of all field automorphisms of a field $L$ 
+  with $\aut{}{L}$. 
+\end{dfn}
+
+\begin{thm}[\link{thm:field_emb}{Fields Embed into other Fields}]
+  
+  Let $\io : K \to L$ be a morphism of fields. 
+
+  Then $\io$ is injective. 
+  In particular, $\io$ is a field isomorphism from $K$ to its image. 
+\end{thm}
+\begin{proof}
+  Injectivity of $\io$ is equivalent to $\io^{-1}(0) = \{0\}$. 
+  Let $x \in \io^{-1}(0)$.
+  If it is non-zero, then there exists $y \in K$ such that $x y = 1$. 
+  Then $1 = \io(1) = \io(x) \io(y) = 0$
+  which is a contradiction, since $L$ is non-trivial. 
+\end{proof}
+
+\begin{dfn} [\link{dfn:ext}
+  {Extensions of a Field, Extension Embeddings, Isomorphisms, 
+  Automorphisms}] 
+  
+  Let $K$ be a field. 
+  Then a \emph{$K$-extension} is a pair $(L,\io_L)$
+  where $L$ is a field and $\io_L : K \to L$ is a field morphism. 
+  We say \emph{$L$ extends $K$}. 
+
+  A \emph{$K$-embedding} between 
+  two $K$-extensions $(L,\io_L), (N,\io_N)$ is 
+  a field morphism $\io : L \to N$ such that $\io \circ \io_L = \io_N$.
+  We say $K$ is \emph{preserved} in such a map.
+  If a $K$-embedding is bijective, 
+  it is called a \emph{$K$-isomorphism}. 
+  In particular, 
+  $K$-isomorphisms from a $K$-extension to itself are 
+  called \emph{$K$-automorphisms}. 
+
+  The set of $K$-embeddings between $(L,\io_L), (N,\io_N)$ is 
+  denoted with $\emb{K}{\io_L}{\io_N}$. 
+  If the field morphisms $\io_L, \io_N$ are clear, 
+  we write $\emb{K}{L}{N}$. 
+  In a similar manner, 
+  we denote the set of $K$-automorphisms of $(L,\io_L)$ with 
+  $\aut{K}{\io_L}$, or simply $\aut{K}{L}$ when $\io_L$ is clear. 
+
+\end{dfn}
+
+\begin{dfn}[\link{dfn:fixed_galois}
+  {Fixed Subfields, Galois Extensions}]
+  
+  Let $L$ be a field. 
+  Then $\aut{}{L}$ forms a group under function composition. 
+  Let $G$ be a finite subgroup of $\aut{}{L}$.
+  We say \emph{$G$ acts on $L$}. 
+
+  Then the \emph{subfield fixed by $G$}, denoted $L^G$, 
+  is the set of elements in $a \in L$ such that 
+  for all $\sigma \in G$, $\sigma (a) = a$. 
+  $L^G$ forms field and the inclusion of it into $L$ is a field morphism, 
+  making $L$ into an $L^G$-extension. 
+
+  Let $K$ be a field with $(L,\io_L)$ as a $K$-extension. 
+  Then $(L,\io_L)$ is called a \emph{Galois} when 
+  $\io_L K = L^G$ for some finite subgroup $G \subseteq \aut{}{L}$. 
+  In this case, $G$ is called a \emph{Galois group of $(L,\io_L)$}. 
+\end{dfn}
+
+\begin{dfn} [\link{dfn:gc}{Antitone Galois Connection}]
+
+  Let $(I,\leq), (J, \leq)$ be partially ordered sets. 
+  Then an \emph{antitone Galois connection between $I$ and $J$} is 
+  a pair of maps $F : I \to J$ and $G : J \to I$ such that
+  \begin{enumerate}
+    \item (Antitonicity) 
+    For all $i_0 \leq i_1 \in I$ and $j_0 \leq j_1 \in J$, 
+    we have $F(i_1) \leq F(i_0)$ and $G(j_1) \leq G(j_0)$. 
+    \item (Adjunction) For all $i \in I, j \in J$, 
+    we have $i \leq G(j) \iff j \leq F(i)$. 
+  \end{enumerate}
+\end{dfn}
+
+\begin{thm} [\link{thm:gc_bij}
+  {Antitone Galois Connections gives Bijection on Images}]
+
+  Let $(I,\leq), (J,\leq)$ be partially ordered sets and 
+  $F : I \to J, G : J \to I$ an antitone Galois connection.
+
+  Then $G \circ F \circ G = G$ and $F \circ G \circ F = F$, 
+  that is to say $F : G(J) \to F(I)$ and $G : F(I) \to G(J)$ are bijections. 
+\end{thm}
+\begin{proof}
+  Straight forward. 
+\end{proof}
+
+\begin{cor} [\link{cor:gc_galois}
+  {The Antitone Galois Connection of Galois Theory}] 
+  
+  Let $(L,\io_L)$ be a $K$-extension. 
+  Let $I$ be the set of fields inside $L$ containing $\io_L K$, 
+  i.e. the set of $K$-extensions inside $L$. 
+  This is partially ordered by inclusion. 
+  Let $J$ be the set of subgroups of 
+  the group of $K$-automorphisms of $L$, $\aut{K}{L}$. 
+  This is also partially ordered by inclusion. 
+
+  Then the maps \begin{alignat*}{3}
+    \aut{-}{L} : I \longrightarrow J &&\quad L^- : J \longrightarrow I \\
+    E \mapsto \aut{E}{L} &&\quad H \mapsto L^H
+  \end{alignat*}
+  form an antitone Galois connection and are bijective on their images. 
+\end{cor}
+
+\begin{thm} [\link{thm:ftg1}
+  {Fundamental Theorem of Galois Theory}] 
+
+  Let $(L,\io_L)$ be a $K$-extension,
+  $I$ the partially ordered set of $K$-extensions inside $L$, 
+  and $J$ the partially ordered set of subgroups of $\aut{K}{L}$. 
+  Let $(L,\io_L)$ be Galois. 
+
+  Then $\aut{-}{L} : I \to J$ and $L^{-} : J \to I$ are surjections. 
+\end{thm}
+
+\begin{rmk}
+  The \linkto{thm:ftg2}{full fundamental theorem} has more subtleties, 
+  but the essence of Galois theory is to characterise Galois extensions 
+  in order to exploit the bijection between subextensions and subgroups. 
+\end{rmk}
+
+\end{document}
