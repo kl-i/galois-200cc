@@ -24,11 +24,11 @@
     $\forall\, x, y \in K, \io(x y) = \io(x) \io(y)$. 
     \item (Preserves One) $\io(1) = 1$.  
   \end{enumerate} 
-  A field morphism that is bijective is called an \emph{isomorphism}. 
+  A bijective field morphism is called an \emph{isomorphism}. 
   In particular, 
   isomorphisms of a field to itself are called \emph{automorphisms}. 
   We denote the set of all field automorphisms of a field $L$ 
-  with $\aut{}{L}$. 
+  with $\aut L$. 
 \end{dfn}
 
 \begin{thm}[\link{thm:field_emb}{Fields Embed into other Fields}]
@@ -71,7 +71,7 @@
   we write $\emb{K}{L}{N}$. 
   In a similar manner, 
   we denote the set of $K$-automorphisms of $(L,\io_L)$ with 
-  $\aut{K}{\io_L}$, or simply $\aut{K}{L}$ when $\io_L$ is clear. 
+  $\aut_K(\io_L)$, or simply $\aut_K L$ when $\io_L$ is clear. 
 
 \end{dfn}
 
@@ -79,19 +79,19 @@
   {Fixed Subfields, Galois Extensions}]
   
   Let $L$ be a field. 
-  Then $\aut{}{L}$ forms a group under function composition. 
-  Let $G$ be a finite subgroup of $\aut{}{L}$.
+  Then $\aut L$ forms a group under function composition. 
+  Let $G$ be a finite subgroup of $\aut L$.
   We say \emph{$G$ acts on $L$}. 
 
   Then the \emph{subfield fixed by $G$}, denoted $L^G$, 
-  is the set of elements in $a \in L$ such that 
+  is the field of elements in $a \in L$ such that 
   for all $\sigma \in G$, $\sigma (a) = a$. 
-  $L^G$ forms field and the inclusion of it into $L$ is a field morphism, 
+  Its inclusion into $L$ is a field morphism, 
   making $L$ into an $L^G$-extension. 
 
   Let $K$ be a field with $(L,\io_L)$ as a $K$-extension. 
   Then $(L,\io_L)$ is called a \emph{Galois} when 
-  $\io_L K = L^G$ for some finite subgroup $G \subseteq \aut{}{L}$. 
+  $\io_L K = L^G$ for some finite subgroup $G \subseteq \aut L$. 
   In this case, $G$ is called a \emph{Galois group of $(L,\io_L)$}. 
 \end{dfn}
 
@@ -130,12 +130,12 @@
   i.e. the set of $K$-extensions inside $L$. 
   This is partially ordered by inclusion. 
   Let $J$ be the set of subgroups of 
-  the group of $K$-automorphisms of $L$, $\aut{K}{L}$. 
+  the group of $K$-automorphisms of $L$, $\aut_K L$. 
   This is also partially ordered by inclusion. 
 
   Then the maps \begin{alignat*}{3}
-    \aut{-}{L} : I \longrightarrow J &&\quad L^- : J \longrightarrow I \\
-    E \mapsto \aut{E}{L} &&\quad H \mapsto L^H
+    \aut_{-} L : I \longrightarrow J &&\quad L^- : J \longrightarrow I \\
+    E \mapsto \aut_E L &&\quad H \mapsto L^H
   \end{alignat*}
   form an antitone Galois connection and are bijective on their images. 
 \end{cor}
@@ -145,10 +145,10 @@
 
   Let $(L,\io_L)$ be a $K$-extension,
   $I$ the partially ordered set of $K$-extensions inside $L$, 
-  and $J$ the partially ordered set of subgroups of $\aut{K}{L}$. 
+  and $J$ the partially ordered set of subgroups of $\aut_K L$. 
   Let $(L,\io_L)$ be Galois. 
 
-  Then $\aut{-}{L} : I \to J$ and $L^{-} : J \to I$ are surjections. 
+  Then $\aut_{-} L : I \to J$ and $L^{-} : J \to I$ are surjections. 
 \end{thm}
 
 \begin{rmk}

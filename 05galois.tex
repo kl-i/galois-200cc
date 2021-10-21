@@ -9,66 +9,95 @@
   Let $(L,\io_L)$ be a $K$-extension.
   Then $(L,\io_L)$ is finite, normal, separable if and only if 
   $(L,\io_L)$ is Galois. 
-  Furthermore, the Galois group of $(L,\io_L)$ is always $\aut{K}{L}$
-  and $[L : K] = |\aut{K}{L}|$. 
+  Furthermore, the Galois group of $(L,\io_L)$ is always $\aut_{K}{L}$
+  and $[L : K] = |\aut_{K}{L}|$. 
 
 \end{thm}
 \begin{proof}
-  $(\implies)$ We must give a finite subgroup $G \subseteq \aut{}{L}$
+  $(\implies)$ We must give a finite subgroup $G \subseteq \aut_{}{L}$
   such that $\io_L K = L^G$. 
-  Then claim is that $G = \aut{K}{L}$ works. 
+  The claim is that $G = \aut_{K}{L}$ works. 
 
   We first show that $\io_L K = L^G$. 
-  It suffices to show $L^G \subseteq \io_L K$. 
-  Let $a \in L^G$. It suffices to show that $\min(a,K)$ is linear. 
-  Then since $L$ is normal, $L$ splits $\min(a,K)$. 
-  Let $\al$ be a root of $\min(a,K)$, i.e. a Galois $K$-conjugate of $a$. 
-  Then by the \linkto{lem:char_simp}
+  It suffices $L^G \subseteq \io_L K$. 
+  Let $a \in L^G$. It suffices that $\min(a,K)$ is linear. 
+  Since $L$ is normal, $L$ splits $\min(a,K)$. 
+  By separability of $\min(a,K)$,
+  it suffices to show the only Galois $K$-conjugate of $a$ in $L$ is $a$.
+  Let $\al \in L$ be a Galois $K$-conjugate of $a$. 
+  It suffices to give $\phi_\al^L \in G = \aut_{K}{L}$ such that 
+  $\phi_\al^L(a) = \al$.
+  First by the \linkto{lem:char_simp}
   {characterisation of finite simple extensions}, 
   there exists $\phi_\al \in \emb{K}{(K(a),\io_L)}{(L,\io_L)}$
   such that $\phi_\al(a) = \al$. 
   Then by normality of $(L,\io_L)$ and 
-  the \linkto{thm:embed}{embedding theorem for finite extensions}, 
-  there exists $\phi_\al^L \in \emb{K(a)}{(L,\io_L)}{(L,\phi_\al)}$. 
-  We have $\phi_\al^L \circ \io_L = \phi_\al \circ \io_L = \io_L$,
-  i.e. $\phi_\al^L \in \aut{K}{L} = G$. 
-  Thus $a = \phi_\al^L(a) = \phi_\al(a) = \al$. 
-  So $a$ only has one Galois $K$-conjugate in $(L,\io_L)$,
-  and since $\min(a,K)$ has no repeated roots in $(L,\io_L)$,
-  $\min(a,K)$ must be linear. 
+  the \linkto{thm:embed}{embedding theorem for finite extensions},
+  there exists $\phi_\al^L \in \emb{K(a)}{L}{(L,\phi_\al)}$.
+  $\phi_\al^L$ is as desired.
+
+  % Then by the \linkto{lem:char_simp}
+  % {characterisation of finite simple extensions}, 
+  % there exists $\phi_\al \in \emb{K}{(K(a),\io_L)}{(L,\io_L)}$
+  % such that $\phi_\al(a) = \al$. 
+  % Then by normality of $(L,\io_L)$ and 
+  % the \linkto{thm:embed}{embedding theorem for finite extensions}, 
+  % there exists $\phi_\al^L \in \emb{K(a)}{(L,\io_L)}{(L,\phi_\al)}$. 
+  % We have $\phi_\al^L \circ \io_L = \phi_\al \circ \io_L = \io_L$,
+  % i.e. $\phi_\al^L \in \aut_{K}{L} = G$. 
+  % Thus $a = \phi_\al^L(a) = \phi_\al(a) = \al$. 
+  % So $a$ only has one Galois $K$-conjugate in $(L,\io_L)$,
+  % and since $\min(a,K)$ has no repeated roots in $(L,\io_L)$,
+  % $\min(a,K)$ must be linear. 
 
   Finiteness of $G$ follows from 
   the \linkto{thm:embed}{embedding theorem for finite extensions}.
-  \[ |G| = |\aut{K}{L}| = |\emb{K}{L}{L}| \leq [L : K] \]
+  \[ |G| = |\aut_{K}{L}| = |\emb{K}{L}{L}| \leq [L : K] \]
 
-  $(\limplies)$ Let $G$ be a finite subgroup of $\aut{}{L}$ such that 
+  $(\limplies)$ Let $G$ be a finite subgroup of $\aut_{}{L}$ such that 
   $\io_L K = L^G$. 
   WLOG we replace $K$ with $L^G$. 
-  We first show that $L$ is normal and separable over $L^G$. 
+  We first show that $L$ is algebraic, normal and separable over $L^G$. 
   Let $a \in L$. 
-  We define the \emph{orbit of $a$ under $G$} as the set 
-  $\Orb(a)$ of $\sigma(a)$ for $\sigma \in G$,
-  and the claim is that 
+  Ideally, if $L$ is normal over $L^G$, then 
+  it contains all Galois $L^G$-conjugates of $a$,
+  which are precisely images of $a$ under $L^G$-automorphisms by
+  the \linkto{lem:embed_simp}{embedding theorem for finite simple extensions}
+  and \linkto{thm:embed}{finite extensions}.
+  From this, we conjecture that
   \[ \min(a,K)(X) = \prod_{\al \in \Orb(a)} (X - \al) \]
-  which is separable and split by $L$. 
+  where $\Orb(a) := \set{\sigma(a) \st \sigma \in G}$.
+  This suffices since the right exists, and is separable and split by $L$.
+  % We define the \emph{orbit of $a$ under $G$} as the set 
+  % $\Orb(a)$ of $\sigma(a)$ for $\sigma \in G$,
+  % and the claim is that 
+  % 
+  % which is separable and split by $L$. 
+  For the claim, it suffices that $\prod_{\al \in \Orb(a)} (X - \al)$
+  is in $L^G[X]$ and irreducible. 
+  The first follows from any $\sigma \in G$ permuting $\Orb(a)$.
+  The latter follows since any $f \in L^G[X]$ that 
+  has $a$ as a root must also have all of $\Orb(a)$ as roots via
+  $0 = \sigma(ev_a f) = ev_{\sigma(a)}^\sigma f = ev_{\sigma(a)} f$
+  for any $\sigma \in G$.
 
-  For the claim, we must show $\prod_{\al \in \Orb(a)} (X - \al)$
-  is in $L^G[X]$ and is irreducible. 
-  The first follows from 
-  $\sigma \prod_{\al \in \Orb(a)} (X - \al) 
-  = \prod_{\al^\prime \in \Orb(a)} (X - \al^\prime)$
-  for all $\sigma \in G$. 
-  For the latter, suppose $\prod_{\al \in \Orb(a)}(X - \al) = f(X)g(X)$
-  where $f, g \in L^G[X]$. 
-  Then since $a \in \Orb(a)$, $0 = ev_a(f g) = f(a) g(a)$
-  which implies either $f$ or $g$ has $a$ as a root. 
-  WLOG it's $f$. 
-  Then for all $\al \in \Orb(a)$, 
-  $\al = \sigma(a)$ for some $\sigma \in G$,
-  and thus $0 = \sigma(ev_a f) = ev_{\sigma(a)}^\sigma f 
-  = ev_{\sigma(a)} f = ev_\al f$.
-  This proves $\prod_{\al \in \Orb(a)} (X - \al) = f(X)$,
-  and hence the claim. 
+  % For the claim, we must show $\prod_{\al \in \Orb(a)} (X - \al)$
+  % is in $L^G[X]$ and is irreducible. 
+  % The first follows from 
+  % $\sigma \prod_{\al \in \Orb(a)} (X - \al) 
+  % = \prod_{\al^\prime \in \Orb(a)} (X - \al^\prime)$
+  % for all $\sigma \in G$. 
+  % For the latter, suppose $\prod_{\al \in \Orb(a)}(X - \al) = f(X)g(X)$
+  % where $f, g \in L^G[X]$. 
+  % Then since $a \in \Orb(a)$, $0 = ev_a(f g) = f(a) g(a)$
+  % which implies either $f$ or $g$ has $a$ as a root. 
+  % WLOG it's $f$. 
+  % Then for all $\al \in \Orb(a)$, 
+  % $\al = \sigma(a)$ for some $\sigma \in G$,
+  % and thus $0 = \sigma(ev_a f) = ev_{\sigma(a)}^\sigma f 
+  % = ev_{\sigma(a)} f = ev_\al f$.
+  % This proves $\prod_{\al \in \Orb(a)} (X - \al) = f(X)$,
+  % and hence the claim. 
 
   We now prove that $[L : L^G]$ is finite, and in fact, 
   $[L : L^G] \leq |G|$. 
@@ -79,7 +108,6 @@
   for any $L^G$-linearly independent $X \subseteq L$, 
   there is an $L$-linearly independent $X_1 \subseteq G \to L$
   with $|X| = |X_1|$. 
-
   Let $X \subseteq L$ be $L^G$-linearly independent.
   Then for each $x \in X$, we have $ev_x : G \to L, \sigma \mapsto \sigma(x)$.
   Since $id \in G$, $\{ev_x\}_{x \in X}$ bijects with $X$. 
@@ -106,14 +134,14 @@
       \right)
     = 0 
   \]
-  i.e. we have a linear combination of 
+  i.e. we have a $L$-linear combination of 
   $\{ev_x \,|\, x \in X_0 \setminus \{x_0\}\}$ yielding zero.
-  So, by induction on the size of $X_0$, 
+  By induction on the size of $X_0$, 
   $\la_x = \sigma(\la_x)$ for all $x \in X_0$.
-  We have thus shown for all $x \in X_0$, $\la_x \in L^G$ as desired. 
+  Thus for all $x \in X_0$, $\la_x \in L^G$ as desired. 
   
-  The fact that $G = \aut{L^G}{L}$ follows from 
-  $|G| \leq |\aut{L^G}{L}| = [L : L^G] \leq |G|$.
+  The fact that $G = \aut_{L^G}{L}$ follows from 
+  $|G| \leq |\aut_{L^G}{L}| = [L : L^G] \leq |G|$.
   This concludes the proof. 
 \end{proof}
 
@@ -130,19 +158,20 @@
   \end{enumerate}
 \end{lem}
 \begin{proof}~
-  $(1)$ Let $(L,\io_L)$ be normal and $a \in L$. 
-  Then $\min(a,E) | \io_L \min(a,K)$ which splits in $L$ implies 
-  $\min(a,E)$ splits in $L$. 
+  $(1)$ Easy via the first 
+  \linkto{thm:char_normal}{characterisation of finite normal extensions}.
+  % Let $(L,\io_L)$ be normal and $a \in L$. 
+  % Then $\min(a,E) | \io_L \min(a,K)$ which splits in $L$ implies 
+  % $\min(a,E)$ splits in $L$. 
 
   $(2)$ Let $(L,\io_L)$ be separable and $a \in L$. 
   Then $\min(a,E) | \io_L \min(a,K)$. 
-  It thus suffices to show that for all $g, f \in E[X]$, 
+  It suffices to show for all $g, f \in E[X]$, 
   $g | f$ and $f$ separable implies $g$ separable. 
-  Let $g, f \in E[X]$ and $g$ not separable. 
-  Let $(M,\io_M)$ be an $E$-extension where $g$ splits but has repeated roots. 
+  Let $g, f \in E[X]$, $g\dvd f$ and $f$ separable.
+  Let $(M,\io_M)$ be an $E$-extension where $g$ splits. 
   By extending $(M,\io_M)$, WLOG $f$ splits in $M$ as well. 
-  Then $g | f$ implies $\io_M g | \io_M f$, 
-  which implies $f$ has repeated roots in $M$ and hence not separable. 
+  Then $f$ having no repeated roots implies $g$ has no repeated roots. 
 \end{proof}
 
 \begin{thm} [\link{thm:ftg2}
@@ -150,64 +179,63 @@
 
   Let $(L,\io_L)$ be a Galois $K$-extension,
   $I$ the partially ordered set of $K$-extensions inside $L$, 
-  and $J$ the partially ordered set of subgroups of $\aut{K}{L}$. 
+  and $J$ the partially ordered set of subgroups of $\aut_{K}{L}$. 
 
-  Then $\aut{-}{L} : I \to J$ and $L^{-} : J \to I$ are surjections
+  Then $\aut_{-}{L} : I \to J$ and $L^{-} : J \to I$ are surjections
   and hence bijections. 
   Furthermore, we have the following : 
   \begin{enumerate}
     \item (Degree equals Index) Let $E \in I$. 
-    Then $[E : K] = [\aut{K}{L} : \aut{E}{L}]$.
+    Then $[E : K] = [\aut_{K}{L} : \aut_{E}{L}]$.
     \item (Group Action) Let $E \in I$. 
-    Then for all $\sigma \in \aut{K}{L}$, 
-    $\aut{\sigma E}{L} = \sigma \aut{E}{L} \sigma^{-1}$. 
+    Then for all $\sigma \in \aut_{K}{L}$, 
+    $\aut_{\sigma E}{L} = \sigma \aut_{E}{L} \sigma^{-1}$. 
     \item (Normality) Let $E \in I$. 
     Then $E$ is a normal $K$-extension if and only if 
-    $\aut{E}{L}$ is a normal subgroup of $\aut{K}{L}$. 
+    $\aut_{E}{L}$ is a normal subgroup of $\aut_{K}{L}$. 
     In this case, we have the isomorphism 
-    $\aut{K}{E} \cong \aut{K}{L} / \aut{E}{L}$. 
+    $\aut_{K}{E} \cong \aut_{K}{L} / \aut_{E}{L}$. 
   \end{enumerate}
 \end{thm}
 \begin{proof}
   % Let $H \in J$. Then $L$ is a Galois $L^H$-extension, 
   % which by the characterisation of Galois extensions implies 
-  % $\aut{L^H}{L} = H$. 
-  % So $\aut{-}{L}$ is surjective. 
+  % $\aut_{L^H}{L} = H$. 
+  % So $\aut_{-}{L}$ is surjective. 
   % 
   % Let $E \in I$. Then by the characterisation of Galois extensions, 
   % $L$ is a finite, normal, separable $K$-extension, 
   % which implies $L$ is a finite, normal, separable $E$-extension, 
   % which by the characterisation again, implies 
-  % $E = L^{\aut{E}{L}}$. 
+  % $E = L^{\aut_{E}{L}}$. 
   % Hence, $L^{-}$ is surjective. 
-  Surjectivity of $\aut{-}{L}, L^-$ and $(1)$ follows from 
+  Surjectivity of $\aut_{-}{L}, L^-$ and $(1)$ follows from 
   \linkto{lem:lift_normal}{lifting normality and separability} and 
   the \linkto{thm:char_gal}{characterisation of Galois extensions}. 
   $(2)$ follows from definition. 
 
-  $(3)$ First, $E$ normal $K$-extension implies $\aut{E}{L}$ normal 
+  $(3)$ First, $E$ normal $K$-extension implies $\aut_{E}{L}$ normal 
   follows from the \linkto{thm:char_norm}
   {characterisation of finite normal extensions} and $(2)$. 
 
   Now let $E \in I$ such that 
-  $\aut{E}{L}$ is a normal subgroup of $\aut{K}{L}$.
-  Then by $(2)$, for all $\sigma \in \aut{K}{L}$, 
-  $\sigma E = L^{\aut{\sigma E}{L}} = L^{\sigma \aut{E}{L} \sigma^{-1}}
-  = L^{\aut{E}{L}} = E$.
+  $\aut_{E}{L}$ is a normal subgroup of $\aut_{K}{L}$.
+  Then by $(2)$, for all $\sigma \in \aut_{K}{L}$, 
+  $\sigma E = L^{\aut_{\sigma E}{L}} = L^{\sigma \aut_{E}{L} \sigma^{-1}}
+  = L^{\aut_{E}{L}} = E$.
   We thus have a natural group morphism 
-  $\aut{K}{L} \to \aut{}{E}, \sigma \mapsto \sigma$.
+  $\aut_{K}{L} \to \aut_{}{E}, \sigma \mapsto \sigma$.
   Let $G$ be its image. 
-  The kernel is clearly $\aut{E}{L}$, 
+  The kernel is clearly $\aut_{E}{L}$, 
   so by the first isomorphism theorem for groups, 
-  we have $G \iso \aut{K}{L} / \aut{E}{L}$.
-  Then $E^{G} = E \cap L^{\aut{K}{L}} = E \cap \io_L K = \io_L K$,
+  we have $G \iso \aut_{K}{L} / \aut_{E}{L}$.
+  Then $E^{G} = E \cap L^{\aut_{K}{L}} = E \cap \io_L K = \io_L K$,
   thus $E$ is a Galois $K$-extension, in particular normal. 
-  We have thus also shown that $\aut{K}{E} \cong \aut{K}{L} / \aut{E}{L}$. 
-
+  We have thus also shown that $\aut_{K}{E} \cong \aut_{K}{L} / \aut_{E}{L}$. 
   % By the characterisation of Galois extensions, 
   % $L$ being Galois as a $K$-extension implies $L$ is Galois as a $E$-extension.
   % Thus $[E : K] = [L : K] / [L : E]
-  % = |\aut{K}{L}| / |\aut{E}{L}| = [\aut{K}{L} : \aut{E}{L}]$. 
+  % = |\aut_{K}{L}| / |\aut_{E}{L}| = [\aut_{K}{L} : \aut_{E}{L}]$. 
 \end{proof}
 
 \end{document}
